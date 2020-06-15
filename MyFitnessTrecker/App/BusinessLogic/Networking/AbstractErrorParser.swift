@@ -2,8 +2,8 @@
 //  AbstractErrorParser.swift
 //  DOShop
 //
-//  Created by MacBook on 12.04.2020.
-//  Copyright © 2020 MacBook. All rights reserved.
+//  Created by ios_Dev on 10.06.2020.
+//  Copyright © 2020 ios_Dev. All rights reserved.
 //
 
 import Foundation

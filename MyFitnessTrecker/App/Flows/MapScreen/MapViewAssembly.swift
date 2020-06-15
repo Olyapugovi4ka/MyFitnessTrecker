@@ -2,7 +2,7 @@
 //  MapViewAssembly.swift
 //  StorageLLC
 //
-//  Created by ios_Dev on 22.05.2020.
+//  Created by ios_Dev on 10.06.2020.
 //  Copyright © 2020 ios_Dev. All rights reserved.
 //
 
