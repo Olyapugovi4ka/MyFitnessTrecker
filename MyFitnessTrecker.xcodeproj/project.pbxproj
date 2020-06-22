@@ -13,6 +13,7 @@
 		73783E2E249B654A0031026A /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73783E2D249B654A0031026A /* RealmProvider.swift */; };
 		73783E30249B6ED70031026A /* route.png in Resources */ = {isa = PBXBuildFile; fileRef = 73783E2F249B6ED70031026A /* route.png */; };
 		73783E32249B6F140031026A /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 73783E31249B6F140031026A /* stop.png */; };
+		737A1A3524A098180038B898 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A1A3424A098180038B898 /* User.swift */; };
 		73E7BCEC2490BB5D00C091B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7BCEB2490BB5D00C091B5 /* AppDelegate.swift */; };
 		73E7BCEE2490BB5D00C091B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7BCED2490BB5D00C091B5 /* SceneDelegate.swift */; };
 		73E7BCF52490BB6500C091B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73E7BCF42490BB6500C091B5 /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		73783E2D249B654A0031026A /* RealmProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
 		73783E2F249B6ED70031026A /* route.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = route.png; sourceTree = "<group>"; };
 		73783E31249B6F140031026A /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
+		737A1A3424A098180038B898 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		73E7BCE82490BB5D00C091B5 /* MyFitnessTrecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFitnessTrecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73E7BCEB2490BB5D00C091B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73E7BCED2490BB5D00C091B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				73783E29249B5F440031026A /* Path.swift */,
+				737A1A3424A098180038B898 /* User.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				73E7BD4B2490D75C00C091B5 /* UIView+Extension.swift in Sources */,
 				73E7BD2E2490CCC100C091B5 /* MapViewRouter.swift in Sources */,
 				73E7BD282490CC6300C091B5 /* kGMSLengthGeodesic.swift in Sources */,
+				737A1A3524A098180038B898 /* User.swift in Sources */,
 				73E7BD472490D09F00C091B5 /* LoginView.swift in Sources */,
 				73E7BD322490CCCF00C091B5 /* LoginViewPresenter.swift in Sources */,
 				73E7BD452490CFB900C091B5 /* Auth.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 
 protocol LoginViewRouterProtocol: class {
     func goToMapViewController()
+    func goToRegistration()
 }
 
 class LoginViewRouter {
@@ -21,6 +22,10 @@ class LoginViewRouter {
 }
 
 extension LoginViewRouter: LoginViewRouterProtocol {
+    func goToRegistration() {
+        print(#function)
+    }
+    
     func goToMapViewController() {
         print(#function)
         let mapViewController = MapViewController()

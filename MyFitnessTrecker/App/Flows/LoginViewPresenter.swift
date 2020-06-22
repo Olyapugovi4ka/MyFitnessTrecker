@@ -10,6 +10,7 @@ import Foundation
 
 protocol LoginViewPresenterProtocol {
     func goToMapViewController()
+    func goToRegistration()
 }
 
 class LoginViewPresenter {
@@ -26,6 +27,10 @@ class LoginViewPresenter {
       }
 }
 extension LoginViewPresenter: LoginViewPresenterProtocol {
+    func goToRegistration() {
+        router.goToRegistration()
+    }
+    
     func goToMapViewController() {
          print(#function)
         router.goToMapViewController()
