@@ -81,22 +81,28 @@ class LoginViewController: UIViewController {
     @objc private func hideKeyBoard() {
         loginView.scrollView.endEditing(true)
     }
+    
+    //to clear textFields
+    func clearTextfields() {
+        loginView.setClearTextFields()
+    }
 }
 
 extension LoginViewController: LoginViewDelegate {
+    func registration(with userName: String, and password: String) {
+        presenter?.register(userName: userName, password: password)
+        
+    }
+    
     func restorePassword() {
         print(#function)
         
     }
     
-    func registration() {
-        print(#function)
-        presenter?.goToRegistration()
-    }
     
-    func goToMapViewController() {
+    func login(with userName: String, and password: String) {
         print(#function)
-        presenter?.goToMapViewController()
+        presenter?.login(userName: userName, password: password)
     }
     
     

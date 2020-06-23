@@ -9,14 +9,13 @@
 import UIKit
 
 protocol LoginViewDelegate: class {
-    func goToMapViewController()
+    func login(with userName: String, and password: String)
     func restorePassword()
-    func registration()
+    func registration(with userName: String, and password: String)
 }
 
 class LoginView: UIView {
     weak var loginViewDelegate: LoginViewDelegate?
-    var holderVieHeight: NSLayoutDimension?
     
      // first layer
        lazy var scrollView: UIScrollView = {
@@ -47,25 +46,6 @@ class LoginView: UIView {
         return view
     }()
     
-    lazy var registerLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Don't have an account ?"
-        label.font = label.font.withSize(self.frame.height * 0.046)
-        label.textColor = #colorLiteral(red: 0.1921363771, green: 0.1921699047, blue: 0.1921290755, alpha: 1)
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    lazy var registerButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("REGISTER", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
-        button.setTitleColor(#colorLiteral(red: 0.3145284653, green: 0.6868624687, blue: 0.2808583081, alpha: 1), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
     //third layer
     lazy var userLoginTextField: UITextField = {
         let textField = UITextField()
@@ -92,8 +72,14 @@ class LoginView: UIView {
         button.contentHorizontalAlignment = .center
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(restorePassword), for: .touchUpInside)
         return button
     }()
+    
+    // action for forgotPasswordButton
+    @objc func restorePassword() {
+        loginViewDelegate?.restorePassword()
+    }
     
     lazy var goToMapButton: UIButton = {
         let button = UIButton(type: .system)
@@ -107,10 +93,41 @@ class LoginView: UIView {
         return button
     }()
     
+    // action for goToMapButton
+    @objc func goToMapButtonTapped() {
+        loginViewDelegate?.login(with: userLoginTextField.text ?? "", and: passwordTextField.text ?? "")
+    }
+    
+    lazy var registerLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Don't have an account ?"
+        label.font = label.font.withSize(self.frame.height * 0.046)
+        label.textColor = #colorLiteral(red: 0.1921363771, green: 0.1921699047, blue: 0.1921290755, alpha: 1)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var registerButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("REGISTER", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        button.setTitleColor(#colorLiteral(red: 0.3145284653, green: 0.6868624687, blue: 0.2808583081, alpha: 1), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+         button.addTarget(self, action: #selector(register), for: .touchUpInside)
+        return button
+    }()
+    
+    // action for registerButton
+    @objc func register() {
+        
+        loginViewDelegate?.registration(with: userLoginTextField.text ?? "", and: passwordTextField.text ?? "")
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
-        //mapZoomAnimateWithDelay()
+        mapZoomAnimateWithDelay()
     }
     
     func configureUI() {
@@ -128,62 +145,60 @@ class LoginView: UIView {
         scrollView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         print(scrollView.bounds.size.width)
                print(scrollView.bounds.size.height)
+        
         // containerView constraints
         containerView.anchor(top: scrollView.topAnchor, leading: scrollView.leadingAnchor, bottom: scrollView.bottomAnchor, trailing: scrollView.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         containerView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width).isActive = true
         containerView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.height).isActive = true
         
-
     }
     
      func overlaySecondSubview() {
         containerView.addSubview(holderView)
         
+         // holderView constraints
         holderView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         holderView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
-        holderView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width - 40).isActive = true
-        holderView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        holderView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width - 60).isActive = true
+        holderView.heightAnchor.constraint(equalToConstant: 250).isActive = true
         
     }
     
-      func overlayThirdSubview() {
-
+    func overlayThirdSubview() {
         let registerStack = UIStackView(arrangedSubviews: [registerLabel, registerButton])
         registerStack.translatesAutoresizingMaskIntoConstraints = false
         registerStack.axis = .vertical
         registerStack.distribution = .fillProportionally
-//
-//        registerStack.anchor(top: nil, leading: holderView.leadingAnchor, bottom: holderView.bottomAnchor, trailing: holderView.trailingAnchor, padding: .init(top: 777, left: 20, bottom: 50, right: 20))
-        //registerStack.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
         let containerForHolder = UIStackView(arrangedSubviews: [userLoginTextField,passwordTextField, forgotPasswordButton, goToMapButton,registerStack ])
         containerForHolder.translatesAutoresizingMaskIntoConstraints = false
         containerForHolder.spacing = 10
         containerForHolder.axis = .vertical
         containerForHolder.distribution = .fillEqually
-       // goToMapButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-       // forgotPasswordButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-
+        
         holderView.addSubview(containerForHolder)
+        
+        // containerForHolder constraints
         containerForHolder.topAnchor.constraint(equalTo: holderView.topAnchor, constant: 20).isActive = true
         containerForHolder.leadingAnchor.constraint(equalTo: holderView.leadingAnchor, constant:  16).isActive = true
         containerForHolder.trailingAnchor.constraint(equalTo: holderView.trailingAnchor, constant:  -16).isActive = true
         containerForHolder.bottomAnchor.constraint(equalTo: holderView.bottomAnchor, constant:  -20).isActive = true
-//        holderVieHeight = containerForHolder.heightAnchor
-//        holderView.heightAnchor.constraint(equalTo: holderVieHeight!,constant: 40).isActive = true
-
-
+        
     }
     
-    @objc func goToMapButtonTapped() {
-        loginViewDelegate?.goToMapViewController()
-    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-//   func mapZoomAnimateWithDelay() {
-//    UIView.animate(withDuration: 2) {
-//        self.goToMapButton.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-//    }
-//
-//}
+    
+    //animation for holder
+    func mapZoomAnimateWithDelay() {
+        UIView.animate(withDuration: 2) {
+            self.holderView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }
+        
+    }
+    func setClearTextFields() {
+        userLoginTextField.text = ""
+        passwordTextField.text = ""
+    }
 }

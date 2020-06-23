@@ -12,7 +12,7 @@ import  CoreLocation
 
 protocol MapViewPresenterProtocol {
    func setMarker(to map: GMSMapView)
-  
+   func goToLoginViewController()
 }
 
 class MapViewPresenter {
@@ -34,6 +34,10 @@ class MapViewPresenter {
    
 }
 extension MapViewPresenter: MapViewPresenterProtocol {
+    func goToLoginViewController() {
+        router.goToMapViewController()
+    }
+    
     
     func setMarker(to map: GMSMapView) {
 //        if marker == nil {

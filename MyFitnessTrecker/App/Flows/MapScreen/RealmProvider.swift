@@ -22,18 +22,27 @@ class RealmProvider {
         }
     }
     
+    static func save<T: Object>(item: T,
+                                    configuration: Realm.Configuration = deleteIfMigration,
+                                    update: Realm.UpdatePolicy = .modified) throws {
+            let realm = try Realm(configuration: configuration)
+    //        print(realm.configuration.fileURL!)
+            try realm.write {
+                realm.add(item, update: update)
+            }
+        }
     static func get<T: Object>(_ type: T.Type,
                                configuration: Realm.Configuration = deleteIfMigration) throws -> Results<T> {
         let realm = try Realm(configuration: configuration)
         return realm.objects(type)
     }
     
-    static func delete<T: Object>(items: T,
+    static func delete<T: Object>(item: T,
                                   configuration: Realm.Configuration = deleteIfMigration,
                                   update: Realm.UpdatePolicy = .modified) throws{
         let realm = try Realm(configuration: configuration)
         try realm.write {
-            realm.delete(items)
+            realm.delete(item)
         }
     }
 }

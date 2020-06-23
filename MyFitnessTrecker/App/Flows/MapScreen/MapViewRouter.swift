@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MapViewRouterProtocol: class {
-    
+    func goToMapViewController()
 }
 
 class MapViewRouter {
@@ -21,5 +21,13 @@ class MapViewRouter {
 }
 
 extension MapViewRouter: MapViewRouterProtocol {
+    func goToMapViewController() {
+        let loginViewController = LoginViewController()
+        loginViewController.assembler = LoginViewAssembly(viewController: loginViewController)
+        viewController.navigationController?.pushViewController(loginViewController, animated: true)
+    }
+    
+    
+    
     
 }
