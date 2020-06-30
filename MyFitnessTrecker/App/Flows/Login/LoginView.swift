@@ -35,14 +35,11 @@ class LoginView: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = #colorLiteral(red: 0.9685428739, green: 0.9686816335, blue: 0.9685124755, alpha: 1)
-        //view.alpha = 0.9
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.5
         view.layer.shadowRadius = 8
         view.layer.shadowOffset = CGSize.zero
-        
         view.layer.cornerRadius = 30
-        // view.layer.masksToBounds = true
         return view
     }()
     
@@ -121,9 +118,10 @@ class LoginView: UIView {
     // action for registerButton
     @objc func register() {
         
-        loginViewDelegate?.registration(with: userLoginTextField.text ?? "", and: passwordTextField.text ?? "")
+        loginViewDelegate?.registration(with: userLoginTextField.text ?? "",
+                                        and: passwordTextField.text ?? "")
     }
-    
+    //MARK: -init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -142,12 +140,20 @@ class LoginView: UIView {
         scrollView.addSubview(containerView)
        
         // scrollView constraints
-        scrollView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        scrollView.anchor(top: self.topAnchor,
+                          leading: self.leadingAnchor,
+                          bottom: self.bottomAnchor,
+                          trailing: self.trailingAnchor,
+                          padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         print(scrollView.bounds.size.width)
                print(scrollView.bounds.size.height)
         
         // containerView constraints
-        containerView.anchor(top: scrollView.topAnchor, leading: scrollView.leadingAnchor, bottom: scrollView.bottomAnchor, trailing: scrollView.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        containerView.anchor(top: scrollView.topAnchor,
+                             leading: scrollView.leadingAnchor,
+                             bottom: scrollView.bottomAnchor,
+                             trailing: scrollView.trailingAnchor,
+                             padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         containerView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width).isActive = true
         containerView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.height).isActive = true
         

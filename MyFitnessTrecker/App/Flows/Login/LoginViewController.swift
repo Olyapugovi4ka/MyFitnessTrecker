@@ -11,7 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     private let loginView = LoginView()
-    var isKeyBoardIsOnScreen: Bool = {
+    private var isKeyBoardIsOnScreen: Bool = {
         return false
     }()
     
@@ -29,6 +29,7 @@ class LoginViewController: UIViewController {
        
     }
     
+    //MARK: Controller Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
         loginView.scrollView.isScrollEnabled = false
@@ -37,7 +38,6 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    //MARK: Controller Lifecycle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -96,12 +96,12 @@ extension LoginViewController: LoginViewDelegate {
     
     func restorePassword() {
         print(#function)
+        //TO DO: restore password
         
     }
     
     
     func login(with userName: String, and password: String) {
-        print(#function)
         presenter?.login(userName: userName, password: password)
     }
     
