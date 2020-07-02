@@ -34,7 +34,8 @@ class MapViewController: UIViewController {
     var route: GMSPolyline?
     var routePath: GMSMutablePath?
     
-    var locationManager: CLLocationManager?
+//    var locationManager: CLLocationManager?
+    let locationManager = LocationManager.instance
     
     override func loadView() {
         self.view = mapView
@@ -52,7 +53,9 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         assembler.assembly()
         configureLocationManager()
-        locationManager?.requestLocation()
+        //locationManager?.requestLocation()
+        locationManager.requestLocaion()
+        configureMap()
         mapView.mapView.clear()
         //configureTimer()
     }
@@ -76,8 +79,19 @@ class MapViewController: UIViewController {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { /*[weak self] */_ in
             print(Date())
         }
+    }
+    
+    func configureMap() {
+        locationManager
+            .location
+            .asObservable()
+            .bind { [weak self] location in
+                guard let location = location else { return }
+                
+                let camera = GMSCameraPosition(target: location.coordinate, zoom: 17)
+                self?.mapView.mapView.camera = camera
+        }
         
-
     }
     
     func setCameraToMap(camera: GMSCameraPosition) {
@@ -89,15 +103,16 @@ class MapViewController: UIViewController {
     }
     
     func configureLocationManager(){
-        locationManager = CLLocationManager()
-        
-        locationManager?.delegate = self
-        locationManager?.allowsBackgroundLocationUpdates = true
-        locationManager?.startMonitoringSignificantLocationChanges()
-
-        locationManager?.pausesLocationUpdatesAutomatically = false
-
-        locationManager?.requestAlwaysAuthorization()
+        locationManager
+            .location
+            .asObservable()
+            .bind { [weak self] location in
+                guard let location = location else { return }
+                self?.routePath?.add(location.coordinate)
+                self?.route?.path = self?.routePath
+                let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)
+                self?.mapView.mapView.animate(to: position)
+        }
     }
     
 }
@@ -134,7 +149,7 @@ extension MapViewController: MapViewDelegate {
     }
     
     func stopTracking() {
-        locationManager?.stopUpdatingLocation()
+        locationManager.stopUpdaingLocation()
         if let routePath = routePath {
             let path = Path()
             path.path = routePath.encodedPath()
@@ -160,8 +175,7 @@ extension MapViewController: MapViewDelegate {
     }
     
     func findCenter() {
-        //presenter?.findCenter()
-        locationManager?.requestLocation()
+        locationManager.requestLocaion()
         
     }
     
@@ -169,42 +183,14 @@ extension MapViewController: MapViewDelegate {
         route?.map = nil
         route = GMSPolyline()
         routePath = GMSMutablePath()
+        route?.path = routePath
+        route?.strokeColor = .red
+        route?.strokeWidth = 4
         route?.map = mapView.mapView
-        locationManager?.startUpdatingLocation()
+         locationManager.startUpdatingLocation()
         isTracking = true
     }
     
 }
 
-extension MapViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        guard let location = locations.last else { return }
-        routePath?.add(location.coordinate)
-        route?.path = routePath
-        route?.strokeColor = .red
-        route?.strokeWidth = 4
-        let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)
-        mapView.mapView.animate(to: position)
-        
-        //        let camera = GMSCameraPosition.camera(withTarget: locations.first!.coordinate, zoom: 17)
-        //        mapView.mapView.camera = camera
-        //        let marker = GMSMarker(position: locations.first!.coordinate)
-        //        marker.map = mapView.mapView
-        //        let coder = CLGeocoder()
-        //        coder.reverseGeocodeLocation(locations.first!) { (places, error) in
-        //            if let error = error {
-        //                print(error.localizedDescription)
-        //            } else {
-        //                print(places?.first?.administrativeArea as Any)
-        //                print(places?.first?.country as Any)
-        //                print(places?.first?.name as Any)
-        //                print("-----------------")
-        //            }
-        //        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error.localizedDescription)
-    }
-}
+

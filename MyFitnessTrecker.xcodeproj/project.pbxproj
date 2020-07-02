@@ -12,6 +12,7 @@
 		73410F7824A4989100CB564A /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73410F7724A4989100CB564A /* Validator.swift */; };
 		73410F7A24A49EE300CB564A /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73410F7924A49EE300CB564A /* ShowAlert.swift */; };
 		735742BA24A1EF0800C969BD /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735742B924A1EF0800C969BD /* LaunchViewController.swift */; };
+		7374F84524ADBBCF004D6F44 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7374F84424ADBBCF004D6F44 /* LocationManager.swift */; };
 		73783E2A249B5F440031026A /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73783E29249B5F440031026A /* Path.swift */; };
 		73783E2E249B654A0031026A /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73783E2D249B654A0031026A /* RealmProvider.swift */; };
 		73783E30249B6ED70031026A /* route.png in Resources */ = {isa = PBXBuildFile; fileRef = 73783E2F249B6ED70031026A /* route.png */; };
@@ -73,6 +74,7 @@
 		73410F7724A4989100CB564A /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		73410F7924A49EE300CB564A /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
 		735742B924A1EF0800C969BD /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		7374F84424ADBBCF004D6F44 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		73783E29249B5F440031026A /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		73783E2D249B654A0031026A /* RealmProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
 		73783E2F249B6ED70031026A /* route.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = route.png; sourceTree = "<group>"; };
@@ -167,6 +169,14 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
+		7374F84324ADBBA5004D6F44 /* Location manager */ = {
+			isa = PBXGroup;
+			children = (
+				7374F84424ADBBCF004D6F44 /* LocationManager.swift */,
+			);
+			path = "Location manager";
+			sourceTree = "<group>";
+		};
 		73E7BCDF2490BB5D00C091B5 = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +243,7 @@
 		73E7BD1C2490CA9700C091B5 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				7374F84324ADBBA5004D6F44 /* Location manager */,
 				73410F8A24A4A48400CB564A /* Realm */,
 				73E7BD372490CE5600C091B5 /* Networking */,
 			);
@@ -647,6 +658,7 @@
 				73E7BD2E2490CCC100C091B5 /* MapViewRouter.swift in Sources */,
 				73E7BD282490CC6300C091B5 /* MapViewController.swift in Sources */,
 				737A1A3524A098180038B898 /* User.swift in Sources */,
+				7374F84524ADBBCF004D6F44 /* LocationManager.swift in Sources */,
 				73E7BD472490D09F00C091B5 /* LoginView.swift in Sources */,
 				73E7BD322490CCCF00C091B5 /* LoginViewPresenter.swift in Sources */,
 				73E7BD452490CFB900C091B5 /* Auth.swift in Sources */,

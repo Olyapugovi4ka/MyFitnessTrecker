@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class LoginViewController: UIViewController {
     
@@ -26,6 +27,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         assembler.assembly()
+        configureLoginBindings()
        
     }
     
@@ -103,6 +105,18 @@ extension LoginViewController: LoginViewDelegate {
     
     func login(with userName: String, and password: String) {
         presenter?.login(userName: userName, password: password)
+    }
+   
+    //MARK: Rx
+    func configureLoginBindings() {
+        Observable.combineLatest(loginView.userLoginTextField.rx.text, loginView.passwordTextField.rx.text)
+            .map { login, password in
+                return !(login ?? "").isEmpty && (password ?? "").count >= 6
+        }
+        .bind { [weak self] inputFilled in
+            self?.loginView.goToMapButton.isEnabled = inputFilled
+            self?.loginView.goToMapButton.backgroundColor = inputFilled ? #colorLiteral(red: 0.3145284653, green: 0.6868624687, blue: 0.2808583081, alpha: 1) : .gray
+        }
     }
     
     
