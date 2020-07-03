@@ -15,7 +15,7 @@ extension UIView {
         let height = UIScreen.main.bounds.size.height
 
         let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
-        imageViewBackground.image = UIImage(named: "MapSnapShot.png")
+        imageViewBackground.image = UIImage(named: "MapSnapShot")
 
         // you can change the content mode:
         imageViewBackground.contentMode = .scaleAspectFill
