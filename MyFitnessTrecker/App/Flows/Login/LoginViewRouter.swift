@@ -31,6 +31,7 @@ extension LoginViewRouter: LoginViewRouterProtocol {
         let mapViewController = MapViewController()
         mapViewController.assembler = MapViewAssembly(viewController: mapViewController)
         self.viewController.navigationController?.pushViewController(mapViewController, animated: true)
+        
     }
     
     

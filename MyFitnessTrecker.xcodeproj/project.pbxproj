@@ -15,8 +15,6 @@
 		7374F84524ADBBCF004D6F44 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7374F84424ADBBCF004D6F44 /* LocationManager.swift */; };
 		73783E2A249B5F440031026A /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73783E29249B5F440031026A /* Path.swift */; };
 		73783E2E249B654A0031026A /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73783E2D249B654A0031026A /* RealmProvider.swift */; };
-		73783E30249B6ED70031026A /* route.png in Resources */ = {isa = PBXBuildFile; fileRef = 73783E2F249B6ED70031026A /* route.png */; };
-		73783E32249B6F140031026A /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 73783E31249B6F140031026A /* stop.png */; };
 		737A1A3524A098180038B898 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A1A3424A098180038B898 /* User.swift */; };
 		73E7BCEC2490BB5D00C091B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7BCEB2490BB5D00C091B5 /* AppDelegate.swift */; };
 		73E7BCEE2490BB5D00C091B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7BCED2490BB5D00C091B5 /* SceneDelegate.swift */; };
@@ -43,10 +41,6 @@
 		73E7BD472490D09F00C091B5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7BD462490D09F00C091B5 /* LoginView.swift */; };
 		73E7BD492490D25A00C091B5 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7BD482490D25A00C091B5 /* Constraints.swift */; };
 		73E7BD4B2490D75C00C091B5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7BD4A2490D75C00C091B5 /* UIView+Extension.swift */; };
-		73E7BD4D2490D78900C091B5 /* MapSnapShot.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E7BD4C2490D78900C091B5 /* MapSnapShot.png */; };
-		73E7BD4F2490FA9C00C091B5 /* center.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E7BD4E2490FA9C00C091B5 /* center.png */; };
-		73E7BD532491066C00C091B5 /* go.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E7BD522491066C00C091B5 /* go.png */; };
-		73E7BD5724911FA400C091B5 /* step.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E7BD5624911FA300C091B5 /* step.png */; };
 		7BFBB74B90A42C9D6C00AECB /* Pods_MyFitnessTrecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B27CE094418E0201A6E932DD /* Pods_MyFitnessTrecker.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,8 +71,6 @@
 		7374F84424ADBBCF004D6F44 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		73783E29249B5F440031026A /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		73783E2D249B654A0031026A /* RealmProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
-		73783E2F249B6ED70031026A /* route.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = route.png; sourceTree = "<group>"; };
-		73783E31249B6F140031026A /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
 		737A1A3424A098180038B898 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		73E7BCE82490BB5D00C091B5 /* MyFitnessTrecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFitnessTrecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73E7BCEB2490BB5D00C091B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,10 +103,6 @@
 		73E7BD462490D09F00C091B5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		73E7BD482490D25A00C091B5 /* Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		73E7BD4A2490D75C00C091B5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		73E7BD4C2490D78900C091B5 /* MapSnapShot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapSnapShot.png; sourceTree = "<group>"; };
-		73E7BD4E2490FA9C00C091B5 /* center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = center.png; sourceTree = "<group>"; };
-		73E7BD522491066C00C091B5 /* go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = go.png; sourceTree = "<group>"; };
-		73E7BD5624911FA300C091B5 /* step.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = step.png; sourceTree = "<group>"; };
 		94A47395094EB71D5838B505 /* Pods_MyFitnessTreckerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFitnessTreckerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27CE094418E0201A6E932DD /* Pods_MyFitnessTrecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFitnessTrecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63884E4D93398A25411A7DD /* Pods-MyFitnessTreckerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFitnessTreckerTests.release.xcconfig"; path = "Target Support Files/Pods-MyFitnessTreckerTests/Pods-MyFitnessTreckerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -283,14 +271,8 @@
 		73E7BD212490CACC00C091B5 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
-				73E7BD4E2490FA9C00C091B5 /* center.png */,
-				73E7BD522491066C00C091B5 /* go.png */,
-				73783E2F249B6ED70031026A /* route.png */,
-				73783E31249B6F140031026A /* stop.png */,
-				73E7BD5624911FA300C091B5 /* step.png */,
 				73E7BCF42490BB6500C091B5 /* Assets.xcassets */,
 				73E7BCF62490BB6500C091B5 /* LaunchScreen.storyboard */,
-				73E7BD4C2490D78900C091B5 /* MapSnapShot.png */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -465,14 +447,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73E7BD532491066C00C091B5 /* go.png in Resources */,
-				73E7BD4D2490D78900C091B5 /* MapSnapShot.png in Resources */,
 				73E7BCF82490BB6500C091B5 /* LaunchScreen.storyboard in Resources */,
-				73783E32249B6F140031026A /* stop.png in Resources */,
-				73783E30249B6ED70031026A /* route.png in Resources */,
 				73E7BCF52490BB6500C091B5 /* Assets.xcassets in Resources */,
-				73E7BD5724911FA400C091B5 /* step.png in Resources */,
-				73E7BD4F2490FA9C00C091B5 /* center.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

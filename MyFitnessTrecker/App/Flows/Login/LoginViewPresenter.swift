@@ -33,8 +33,8 @@ extension LoginViewPresenter: LoginViewPresenterProtocol {
         
         // check if userName and password is not empty
         if Validator.isFilled(login: userName, password: password) {
-            guard Validator.isPasswordLengthIsRight(password: password) else { return
-                self.viewController.showAlert(title: "Warning", message: "Password is to be more or equal 6 simbols")
+            guard Validator.isPasswordLengthIsRight(password: password) else {
+                return self.viewController.showAlert(title: "Warning", message: "Password is to be more or equal 6 simbols")
             }
             //check if such user is exist
             if registerNotifications(userName: userName) {

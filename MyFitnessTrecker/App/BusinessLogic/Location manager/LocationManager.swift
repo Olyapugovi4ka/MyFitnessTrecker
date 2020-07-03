@@ -18,35 +18,39 @@ final class LocationManager: NSObject {
     
     private override init() {
         super.init()
+        print("LocationManager init")
         configureLocationManager​()
     }
     let locationManager = CLLocationManager()
     //var location: CLLocation? = nil
     let location: BehaviorRelay<CLLocation?> = BehaviorRelay(value: nil)
     func startUpdatingLocation() {
-        locationManager.startUpdatingLocation()
+        self.locationManager.startUpdatingLocation()
     }
     
     func  requestLocaion() {
-        locationManager.requestLocation()
+        self.locationManager.requestLocation()
     }
     
     func stopUpdaingLocation() {
-        locationManager.stopUpdatingLocation()
+        self.locationManager.stopUpdatingLocation()
     }
     
     private func configureLocationManager​() {
-        locationManager.delegate = self
-        locationManager.allowsBackgroundLocationUpdates = true
-        locationManager.pausesLocationUpdatesAutomatically = false
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.startMonitoringSignificantLocationChanges()
-        locationManager.requestAlwaysAuthorization()
+        self.locationManager.delegate = self
+        self.locationManager.allowsBackgroundLocationUpdates = true
+        self.locationManager.pausesLocationUpdatesAutomatically = false
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        self.locationManager.startMonitoringSignificantLocationChanges()
+        self.locationManager.requestAlwaysAuthorization()
     }
+    deinit {
+            print("LocationManager deinit")
+       }
 }
 extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations.first)
+        //print(locations.first)
         //location = locations.last
         self.location.accept(locations.last)
     }
@@ -54,4 +58,5 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
+   
 }

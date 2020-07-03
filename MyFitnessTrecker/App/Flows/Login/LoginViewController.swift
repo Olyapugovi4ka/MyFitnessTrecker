@@ -12,7 +12,7 @@ import RxSwift
 class LoginViewController: UIViewController {
     
     private let loginView = LoginView()
-    private var isKeyBoardIsOnScreen: Bool = {
+    private lazy var isKeyBoardIsOnScreen: Bool = {
         return false
     }()
     
@@ -28,8 +28,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         assembler.assembly()
         configureLoginBindings()
+        print("LoginView init")
        
     }
+    
     
     //MARK: Controller Lifecycle
     override func viewWillAppear(_ animated: Bool) {

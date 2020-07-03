@@ -14,7 +14,7 @@ class LaunchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if UserDefaults.standard.bool(forKey: "isLogin") {
+        if !UserDefaults.standard.bool(forKey: "isLogin") {
             let loginViewController = LoginViewController()
             loginViewController.assembler = LoginViewAssembly(viewController: loginViewController)
             navigationController?.pushViewController(loginViewController, animated: true)

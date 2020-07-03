@@ -20,15 +20,15 @@ class MapViewController: UIViewController {
     
     var isTracking: Bool = false
     
-    //timer
-    var timer: Timer?
-    
-    // Время, когда таймер был запущен
-    var startTime: Date?
-    // Интервал, в течение которого должен работать таймер, в секундах
-    let timeInterval: TimeInterval = 180
-    // Идентификатор фоновой задачи
-    var beginBackgroundTask: UIBackgroundTaskIdentifier?
+//    //timer
+//    var timer: Timer?
+//
+//    // Время, когда таймер был запущен
+//    var startTime: Date?
+//    // Интервал, в течение которого должен работать таймер, в секундах
+//    let timeInterval: TimeInterval = 180
+//    // Идентификатор фоновой задачи
+//    var beginBackgroundTask: UIBackgroundTaskIdentifier?
     
     
     var route: GMSPolyline?
@@ -39,7 +39,7 @@ class MapViewController: UIViewController {
     
     override func loadView() {
         self.view = mapView
-        mapView.delegate = self
+        self.mapView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,35 +51,38 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        assembler.assembly()
-        configureLocationManager()
+        self.assembler.assembly()
+        self.configureLocationManager()
         //locationManager?.requestLocation()
-        locationManager.requestLocaion()
-        configureMap()
-        mapView.mapView.clear()
+        self.locationManager.requestLocaion()
+        self.configureMap()
+        self.mapView.mapView.clear()
         //configureTimer()
+        print("MapViewVC init")
     }
     
+    
+    
     @objc func goToLoginScreen() {
-        presenter?.goToLoginViewController()
+        self.presenter?.goToLoginViewController()
     }
     
     // for timer
-    func configureTimer() {
-        beginBackgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
-            guard let beginBackgroundTask = self?.beginBackgroundTask else { return }
-            // Гарантированная очистка фоновой задачи при её прекращении
-            UIApplication.shared.endBackgroundTask(beginBackgroundTask)
-            self?.beginBackgroundTask = UIBackgroundTaskIdentifier.invalid
-
-        }
-        // Запоминаем время запуска таймера
-        startTime = Date()
-
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { /*[weak self] */_ in
-            print(Date())
-        }
-    }
+//    func configureTimer() {
+//        beginBackgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+//            guard let beginBackgroundTask = self?.beginBackgroundTask else { return }
+//            // Гарантированная очистка фоновой задачи при её прекращении
+//            UIApplication.shared.endBackgroundTask(beginBackgroundTask)
+//            self?.beginBackgroundTask = UIBackgroundTaskIdentifier.invalid
+//
+//        }
+//        // Запоминаем время запуска таймера
+//        startTime = Date()
+//
+//        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { /*[weak self] */_ in
+//            print(Date())
+//        }
+//    }
     
     func configureMap() {
         locationManager
@@ -95,11 +98,11 @@ class MapViewController: UIViewController {
     }
     
     func setCameraToMap(camera: GMSCameraPosition) {
-        mapView.mapView.camera = camera
+        self.mapView.mapView.camera = camera
     }
     
     func setCenter(with coordinates: CLLocationCoordinate2D) {
-        mapView.mapView.animate(toLocation: coordinates)
+        self.mapView.mapView.animate(toLocation: coordinates)
     }
     
     func configureLocationManager(){
@@ -149,13 +152,13 @@ extension MapViewController: MapViewDelegate {
     }
     
     func stopTracking() {
-        locationManager.stopUpdaingLocation()
+        self.locationManager.stopUpdaingLocation()
         if let routePath = routePath {
             let path = Path()
             path.path = routePath.encodedPath()
             do {
                 let realm = try Realm()
-                print(realm.configuration.fileURL)
+                print(realm.configuration.fileURL!)
                 
                 try! realm.write{
                     realm.deleteAll()
@@ -169,26 +172,26 @@ extension MapViewController: MapViewDelegate {
                 print(error)
             }
         }
-        mapView.mapView.clear()
-        route?.map = nil
-        isTracking = false
+        self.mapView.mapView.clear()
+        self.route?.map = nil
+        self.isTracking = false
     }
     
     func findCenter() {
-        locationManager.requestLocaion()
+        self.locationManager.requestLocaion()
         
     }
     
     func startTracking() {
-        route?.map = nil
-        route = GMSPolyline()
-        routePath = GMSMutablePath()
-        route?.path = routePath
-        route?.strokeColor = .red
-        route?.strokeWidth = 4
-        route?.map = mapView.mapView
-         locationManager.startUpdatingLocation()
-        isTracking = true
+        self.route?.map = nil
+        self.route = GMSPolyline()
+        self.routePath = GMSMutablePath()
+        self.route?.path = routePath
+        self.route?.strokeColor = .red
+        self.route?.strokeWidth = 4
+        self.route?.map = mapView.mapView
+         self.locationManager.startUpdatingLocation()
+        self.isTracking = true
     }
     
 }
