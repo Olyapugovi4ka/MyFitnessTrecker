@@ -20,11 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         let launchViewController = LaunchViewController()
         let navigation = UINavigationController(rootViewController: launchViewController)
-        navigation.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-        navigation.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigation.navigationBar.shadowImage = UIImage()
-        navigation.navigationBar.isTranslucent = true
-        navigation.navigationBar.isUserInteractionEnabled = false
+//        navigation.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+//        navigation.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigation.navigationBar.shadowImage = UIImage()
+//        navigation.navigationBar.isTranslucent = true
+//        navigation.navigationBar.isUserInteractionEnabled = false
         
         
         

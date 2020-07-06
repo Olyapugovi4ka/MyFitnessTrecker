@@ -19,7 +19,7 @@ final class LocationManager: NSObject {
     private override init() {
         super.init()
         print("LocationManager init")
-        configureLocationManager​()
+        self.configureLocationManager​()
     }
     let locationManager = CLLocationManager()
     //var location: CLLocation? = nil
@@ -50,8 +50,6 @@ final class LocationManager: NSObject {
 }
 extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //print(locations.first)
-        //location = locations.last
         self.location.accept(locations.last)
     }
     

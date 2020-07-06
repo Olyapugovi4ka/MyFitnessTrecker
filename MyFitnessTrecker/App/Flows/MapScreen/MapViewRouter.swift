@@ -24,8 +24,8 @@ extension MapViewRouter: MapViewRouterProtocol {
     func goToMapViewController() {
         let loginViewController = LoginViewController()
         loginViewController.assembler = LoginViewAssembly(viewController: loginViewController)
-        viewController.navigationController?.pushViewController(loginViewController, animated: true)
-        viewController.dismiss(animated: true, completion: nil)
+        self.viewController.navigationController?.pushViewController(loginViewController, animated: true)
+        self.viewController.dismiss(animated: true, completion: nil)
     }
     
     

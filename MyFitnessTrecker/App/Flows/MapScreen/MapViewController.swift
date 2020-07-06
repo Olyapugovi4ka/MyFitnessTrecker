@@ -20,21 +20,9 @@ class MapViewController: UIViewController {
     
     var isTracking: Bool = false
     
-//    //timer
-//    var timer: Timer?
-//
-//    // Время, когда таймер был запущен
-//    var startTime: Date?
-//    // Интервал, в течение которого должен работать таймер, в секундах
-//    let timeInterval: TimeInterval = 180
-//    // Идентификатор фоновой задачи
-//    var beginBackgroundTask: UIBackgroundTaskIdentifier?
-    
-    
     var route: GMSPolyline?
     var routePath: GMSMutablePath?
-    
-//    var locationManager: CLLocationManager?
+  
     let locationManager = LocationManager.instance
     
     override func loadView() {
@@ -44,7 +32,7 @@ class MapViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let back = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(goToLoginScreen))
+        let back = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(goToLoginScreen))
         navigationItem.leftBarButtonItem = back
     }
     
@@ -61,31 +49,17 @@ class MapViewController: UIViewController {
         print("MapViewVC init")
     }
     
+    deinit {
+        print("deinit mapVC")
+    }
     
     
     @objc func goToLoginScreen() {
         self.presenter?.goToLoginViewController()
     }
     
-    // for timer
-//    func configureTimer() {
-//        beginBackgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
-//            guard let beginBackgroundTask = self?.beginBackgroundTask else { return }
-//            // Гарантированная очистка фоновой задачи при её прекращении
-//            UIApplication.shared.endBackgroundTask(beginBackgroundTask)
-//            self?.beginBackgroundTask = UIBackgroundTaskIdentifier.invalid
-//
-//        }
-//        // Запоминаем время запуска таймера
-//        startTime = Date()
-//
-//        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { /*[weak self] */_ in
-//            print(Date())
-//        }
-//    }
-    
     func configureMap() {
-        locationManager
+      _ = locationManager
             .location
             .asObservable()
             .bind { [weak self] location in
@@ -106,7 +80,7 @@ class MapViewController: UIViewController {
     }
     
     func configureLocationManager(){
-        locationManager
+       _ = locationManager
             .location
             .asObservable()
             .bind { [weak self] location in
@@ -160,11 +134,11 @@ extension MapViewController: MapViewDelegate {
                 let realm = try Realm()
                 print(realm.configuration.fileURL!)
                 
-                try! realm.write{
+                try realm.write{
                     realm.deleteAll()
                     
                 }
-                try! realm.write{
+                try realm.write{
                     
                     realm.add(path)
                 }
