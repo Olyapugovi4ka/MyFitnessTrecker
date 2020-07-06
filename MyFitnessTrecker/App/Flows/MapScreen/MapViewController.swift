@@ -20,84 +20,76 @@ class MapViewController: UIViewController {
     
     var isTracking: Bool = false
     
-    //timer
-    var timer: Timer?
-    
-    // Время, когда таймер был запущен
-    var startTime: Date?
-    // Интервал, в течение которого должен работать таймер, в секундах
-    let timeInterval: TimeInterval = 180
-    // Идентификатор фоновой задачи
-    var beginBackgroundTask: UIBackgroundTaskIdentifier?
-    
-    
     var route: GMSPolyline?
     var routePath: GMSMutablePath?
-    
-    var locationManager: CLLocationManager?
+  
+    let locationManager = LocationManager.instance
     
     override func loadView() {
         self.view = mapView
-        mapView.delegate = self
+        self.mapView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let back = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(goToLoginScreen))
+        let back = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(goToLoginScreen))
         navigationItem.leftBarButtonItem = back
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        assembler.assembly()
-        configureLocationManager()
-        locationManager?.requestLocation()
-        mapView.mapView.clear()
+        self.assembler.assembly()
+        self.configureLocationManager()
+        //locationManager?.requestLocation()
+        self.locationManager.requestLocaion()
+        self.configureMap()
+        self.mapView.mapView.clear()
         //configureTimer()
+        print("MapViewVC init")
     }
+    
+    deinit {
+        print("deinit mapVC")
+    }
+    
     
     @objc func goToLoginScreen() {
-        presenter?.goToLoginViewController()
+        self.presenter?.goToLoginViewController()
     }
     
-    // for timer
-    func configureTimer() {
-        beginBackgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
-            guard let beginBackgroundTask = self?.beginBackgroundTask else { return }
-            // Гарантированная очистка фоновой задачи при её прекращении
-            UIApplication.shared.endBackgroundTask(beginBackgroundTask)
-            self?.beginBackgroundTask = UIBackgroundTaskIdentifier.invalid
-
-        }
-        // Запоминаем время запуска таймера
-        startTime = Date()
-
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { /*[weak self] */_ in
-            print(Date())
+    func configureMap() {
+      _ = locationManager
+            .location
+            .asObservable()
+            .bind { [weak self] location in
+                guard let location = location else { return }
+                
+                let camera = GMSCameraPosition(target: location.coordinate, zoom: 17)
+                self?.mapView.mapView.camera = camera
         }
         
-
     }
     
     func setCameraToMap(camera: GMSCameraPosition) {
-        mapView.mapView.camera = camera
+        self.mapView.mapView.camera = camera
     }
     
     func setCenter(with coordinates: CLLocationCoordinate2D) {
-        mapView.mapView.animate(toLocation: coordinates)
+        self.mapView.mapView.animate(toLocation: coordinates)
     }
     
     func configureLocationManager(){
-        locationManager = CLLocationManager()
-        
-        locationManager?.delegate = self
-        locationManager?.allowsBackgroundLocationUpdates = true
-        locationManager?.startMonitoringSignificantLocationChanges()
-
-        locationManager?.pausesLocationUpdatesAutomatically = false
-
-        locationManager?.requestAlwaysAuthorization()
+       _ = locationManager
+            .location
+            .asObservable()
+            .bind { [weak self] location in
+                guard let location = location else { return }
+                self?.routePath?.add(location.coordinate)
+                self?.route?.path = self?.routePath
+                let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)
+                self?.mapView.mapView.animate(to: position)
+        }
     }
     
 }
@@ -134,19 +126,19 @@ extension MapViewController: MapViewDelegate {
     }
     
     func stopTracking() {
-        locationManager?.stopUpdatingLocation()
+        self.locationManager.stopUpdaingLocation()
         if let routePath = routePath {
             let path = Path()
             path.path = routePath.encodedPath()
             do {
                 let realm = try Realm()
-                print(realm.configuration.fileURL)
+                print(realm.configuration.fileURL!)
                 
-                try! realm.write{
+                try realm.write{
                     realm.deleteAll()
                     
                 }
-                try! realm.write{
+                try realm.write{
                     
                     realm.add(path)
                 }
@@ -154,57 +146,28 @@ extension MapViewController: MapViewDelegate {
                 print(error)
             }
         }
-        mapView.mapView.clear()
-        route?.map = nil
-        isTracking = false
+        self.mapView.mapView.clear()
+        self.route?.map = nil
+        self.isTracking = false
     }
     
     func findCenter() {
-        //presenter?.findCenter()
-        locationManager?.requestLocation()
+        self.locationManager.requestLocaion()
         
     }
     
     func startTracking() {
-        route?.map = nil
-        route = GMSPolyline()
-        routePath = GMSMutablePath()
-        route?.map = mapView.mapView
-        locationManager?.startUpdatingLocation()
-        isTracking = true
+        self.route?.map = nil
+        self.route = GMSPolyline()
+        self.routePath = GMSMutablePath()
+        self.route?.path = routePath
+        self.route?.strokeColor = .red
+        self.route?.strokeWidth = 4
+        self.route?.map = mapView.mapView
+         self.locationManager.startUpdatingLocation()
+        self.isTracking = true
     }
     
 }
 
-extension MapViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        guard let location = locations.last else { return }
-        routePath?.add(location.coordinate)
-        route?.path = routePath
-        route?.strokeColor = .red
-        route?.strokeWidth = 4
-        let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 17)
-        mapView.mapView.animate(to: position)
-        
-        //        let camera = GMSCameraPosition.camera(withTarget: locations.first!.coordinate, zoom: 17)
-        //        mapView.mapView.camera = camera
-        //        let marker = GMSMarker(position: locations.first!.coordinate)
-        //        marker.map = mapView.mapView
-        //        let coder = CLGeocoder()
-        //        coder.reverseGeocodeLocation(locations.first!) { (places, error) in
-        //            if let error = error {
-        //                print(error.localizedDescription)
-        //            } else {
-        //                print(places?.first?.administrativeArea as Any)
-        //                print(places?.first?.country as Any)
-        //                print(places?.first?.name as Any)
-        //                print("-----------------")
-        //            }
-        //        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error.localizedDescription)
-    }
-}
+

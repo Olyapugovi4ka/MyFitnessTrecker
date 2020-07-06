@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		45FFC068B4D3A2A6986AFAE6 /* Pods_MyFitnessTreckerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A47395094EB71D5838B505 /* Pods_MyFitnessTreckerTests.framework */; };
 		5C8A066778ADC062E8F18230 /* Pods_MyFitnessTrecker_MyFitnessTreckerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A94FFB89A876762947A779 /* Pods_MyFitnessTrecker_MyFitnessTreckerUITests.framework */; };
+		73410F7824A4989100CB564A /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73410F7724A4989100CB564A /* Validator.swift */; };
+		73410F7A24A49EE300CB564A /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73410F7924A49EE300CB564A /* ShowAlert.swift */; };
 		735742BA24A1EF0800C969BD /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735742B924A1EF0800C969BD /* LaunchViewController.swift */; };
+		7374F84524ADBBCF004D6F44 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7374F84424ADBBCF004D6F44 /* LocationManager.swift */; };
 		73783E2A249B5F440031026A /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73783E29249B5F440031026A /* Path.swift */; };
 		73783E2E249B654A0031026A /* RealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73783E2D249B654A0031026A /* RealmProvider.swift */; };
-		73783E30249B6ED70031026A /* route.png in Resources */ = {isa = PBXBuildFile; fileRef = 73783E2F249B6ED70031026A /* route.png */; };
-		73783E32249B6F140031026A /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 73783E31249B6F140031026A /* stop.png */; };
 		737A1A3524A098180038B898 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A1A3424A098180038B898 /* User.swift */; };
 		73E7BCEC2490BB5D00C091B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7BCEB2490BB5D00C091B5 /* AppDelegate.swift */; };
 		73E7BCEE2490BB5D00C091B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7BCED2490BB5D00C091B5 /* SceneDelegate.swift */; };
@@ -40,10 +41,6 @@
 		73E7BD472490D09F00C091B5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7BD462490D09F00C091B5 /* LoginView.swift */; };
 		73E7BD492490D25A00C091B5 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7BD482490D25A00C091B5 /* Constraints.swift */; };
 		73E7BD4B2490D75C00C091B5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E7BD4A2490D75C00C091B5 /* UIView+Extension.swift */; };
-		73E7BD4D2490D78900C091B5 /* MapSnapShot.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E7BD4C2490D78900C091B5 /* MapSnapShot.png */; };
-		73E7BD4F2490FA9C00C091B5 /* center.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E7BD4E2490FA9C00C091B5 /* center.png */; };
-		73E7BD532491066C00C091B5 /* go.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E7BD522491066C00C091B5 /* go.png */; };
-		73E7BD5724911FA400C091B5 /* step.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E7BD5624911FA300C091B5 /* step.png */; };
 		7BFBB74B90A42C9D6C00AECB /* Pods_MyFitnessTrecker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B27CE094418E0201A6E932DD /* Pods_MyFitnessTrecker.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,11 +65,12 @@
 		369B6005B213E5036E43ECC2 /* Pods-MyFitnessTrecker-MyFitnessTreckerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFitnessTrecker-MyFitnessTreckerUITests.release.xcconfig"; path = "Target Support Files/Pods-MyFitnessTrecker-MyFitnessTreckerUITests/Pods-MyFitnessTrecker-MyFitnessTreckerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		68B7AFF8BB7E5B196D7F6610 /* Pods-MyFitnessTreckerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFitnessTreckerTests.debug.xcconfig"; path = "Target Support Files/Pods-MyFitnessTreckerTests/Pods-MyFitnessTreckerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		69B774B4DA42BDD490103FEF /* Pods-MyFitnessTrecker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFitnessTrecker.release.xcconfig"; path = "Target Support Files/Pods-MyFitnessTrecker/Pods-MyFitnessTrecker.release.xcconfig"; sourceTree = "<group>"; };
+		73410F7724A4989100CB564A /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		73410F7924A49EE300CB564A /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
 		735742B924A1EF0800C969BD /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		7374F84424ADBBCF004D6F44 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		73783E29249B5F440031026A /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		73783E2D249B654A0031026A /* RealmProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmProvider.swift; sourceTree = "<group>"; };
-		73783E2F249B6ED70031026A /* route.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = route.png; sourceTree = "<group>"; };
-		73783E31249B6F140031026A /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
 		737A1A3424A098180038B898 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		73E7BCE82490BB5D00C091B5 /* MyFitnessTrecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFitnessTrecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73E7BCEB2490BB5D00C091B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,10 +103,6 @@
 		73E7BD462490D09F00C091B5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		73E7BD482490D25A00C091B5 /* Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		73E7BD4A2490D75C00C091B5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		73E7BD4C2490D78900C091B5 /* MapSnapShot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapSnapShot.png; sourceTree = "<group>"; };
-		73E7BD4E2490FA9C00C091B5 /* center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = center.png; sourceTree = "<group>"; };
-		73E7BD522491066C00C091B5 /* go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = go.png; sourceTree = "<group>"; };
-		73E7BD5624911FA300C091B5 /* step.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = step.png; sourceTree = "<group>"; };
 		94A47395094EB71D5838B505 /* Pods_MyFitnessTreckerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFitnessTreckerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27CE094418E0201A6E932DD /* Pods_MyFitnessTrecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFitnessTrecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63884E4D93398A25411A7DD /* Pods-MyFitnessTreckerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFitnessTreckerTests.release.xcconfig"; path = "Target Support Files/Pods-MyFitnessTreckerTests/Pods-MyFitnessTreckerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +149,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		73410F8A24A4A48400CB564A /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				73783E2D249B654A0031026A /* RealmProvider.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		7374F84324ADBBA5004D6F44 /* Location manager */ = {
+			isa = PBXGroup;
+			children = (
+				7374F84424ADBBCF004D6F44 /* LocationManager.swift */,
+			);
+			path = "Location manager";
+			sourceTree = "<group>";
+		};
 		73E7BCDF2490BB5D00C091B5 = {
 			isa = PBXGroup;
 			children = (
@@ -180,10 +190,10 @@
 		73E7BCEA2490BB5D00C091B5 /* MyFitnessTrecker */ = {
 			isa = PBXGroup;
 			children = (
-				73E7BD222490CADD00C091B5 /* Enviroments */,
-				73E7BD212490CACC00C091B5 /* Resourses */,
-				73E7BD202490CAC300C091B5 /* Core */,
 				73E7BD1B2490CA7A00C091B5 /* App */,
+				73E7BD202490CAC300C091B5 /* Core */,
+				73E7BD212490CACC00C091B5 /* Resourses */,
+				73E7BD222490CADD00C091B5 /* Enviroments */,
 			);
 			path = MyFitnessTrecker;
 			sourceTree = "<group>";
@@ -212,10 +222,8 @@
 				73E7BCEB2490BB5D00C091B5 /* AppDelegate.swift */,
 				73E7BCED2490BB5D00C091B5 /* SceneDelegate.swift */,
 				73E7BD1F2490CAB900C091B5 /* Flows */,
-				73E7BD1E2490CAA900C091B5 /* Assembly */,
 				73E7BD1D2490CAA200C091B5 /* Entity */,
 				73E7BD1C2490CA9700C091B5 /* BusinessLogic */,
-				735742B924A1EF0800C969BD /* LaunchViewController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -223,6 +231,8 @@
 		73E7BD1C2490CA9700C091B5 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				7374F84324ADBBA5004D6F44 /* Location manager */,
+				73410F8A24A4A48400CB564A /* Realm */,
 				73E7BD372490CE5600C091B5 /* Networking */,
 			);
 			path = BusinessLogic;
@@ -237,23 +247,12 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
-		73E7BD1E2490CAA900C091B5 /* Assembly */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Assembly;
-			sourceTree = "<group>";
-		};
 		73E7BD1F2490CAB900C091B5 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				73E7BD262490CC3900C091B5 /* MapScreen */,
+				735742B924A1EF0800C969BD /* LaunchViewController.swift */,
 				73E7BD252490CC2800C091B5 /* Login */,
-				73E7BD462490D09F00C091B5 /* LoginView.swift */,
-				73E7BD232490CC2000C091B5 /* LoginViewController.swift */,
-				73E7BD312490CCCF00C091B5 /* LoginViewPresenter.swift */,
-				73E7BD332490CCD500C091B5 /* LoginViewRouter.swift */,
-				73E7BD352490CCDA00C091B5 /* LoginViewAssembly.swift */,
+				73E7BD262490CC3900C091B5 /* MapScreen */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -263,6 +262,8 @@
 			children = (
 				73E7BD482490D25A00C091B5 /* Constraints.swift */,
 				73E7BD4A2490D75C00C091B5 /* UIView+Extension.swift */,
+				73410F7724A4989100CB564A /* Validator.swift */,
+				73410F7924A49EE300CB564A /* ShowAlert.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -270,14 +271,8 @@
 		73E7BD212490CACC00C091B5 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
-				73E7BD4E2490FA9C00C091B5 /* center.png */,
-				73E7BD522491066C00C091B5 /* go.png */,
-				73783E2F249B6ED70031026A /* route.png */,
-				73783E31249B6F140031026A /* stop.png */,
-				73E7BD5624911FA300C091B5 /* step.png */,
 				73E7BCF42490BB6500C091B5 /* Assets.xcassets */,
 				73E7BCF62490BB6500C091B5 /* LaunchScreen.storyboard */,
-				73E7BD4C2490D78900C091B5 /* MapSnapShot.png */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -293,6 +288,11 @@
 		73E7BD252490CC2800C091B5 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				73E7BD462490D09F00C091B5 /* LoginView.swift */,
+				73E7BD232490CC2000C091B5 /* LoginViewController.swift */,
+				73E7BD312490CCCF00C091B5 /* LoginViewPresenter.swift */,
+				73E7BD332490CCD500C091B5 /* LoginViewRouter.swift */,
+				73E7BD352490CCDA00C091B5 /* LoginViewAssembly.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -305,7 +305,6 @@
 				73E7BD2D2490CCC100C091B5 /* MapViewRouter.swift */,
 				73E7BD292490CC9800C091B5 /* MapView.swift */,
 				73E7BD2F2490CCC700C091B5 /* MapViewAssembly.swift */,
-				73783E2D249B654A0031026A /* RealmProvider.swift */,
 			);
 			path = MapScreen;
 			sourceTree = "<group>";
@@ -448,14 +447,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73E7BD532491066C00C091B5 /* go.png in Resources */,
-				73E7BD4D2490D78900C091B5 /* MapSnapShot.png in Resources */,
 				73E7BCF82490BB6500C091B5 /* LaunchScreen.storyboard in Resources */,
-				73783E32249B6F140031026A /* stop.png in Resources */,
-				73783E30249B6ED70031026A /* route.png in Resources */,
 				73E7BCF52490BB6500C091B5 /* Assets.xcassets in Resources */,
-				73E7BD5724911FA400C091B5 /* step.png in Resources */,
-				73E7BD4F2490FA9C00C091B5 /* center.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +614,7 @@
 				73E7BD242490CC2000C091B5 /* LoginViewController.swift in Sources */,
 				73E7BD432490CF4000C091B5 /* RequestFactory.swift in Sources */,
 				73783E2E249B654A0031026A /* RealmProvider.swift in Sources */,
+				73410F7824A4989100CB564A /* Validator.swift in Sources */,
 				73E7BD3F2490CE5600C091B5 /* RequestRouter.swift in Sources */,
 				73E7BD302490CCC700C091B5 /* MapViewAssembly.swift in Sources */,
 				73E7BD3E2490CE5600C091B5 /* ErrorParser.swift in Sources */,
@@ -629,6 +623,7 @@
 				73E7BD402490CE5600C091B5 /* DataRequest.swift in Sources */,
 				73E7BCEC2490BB5D00C091B5 /* AppDelegate.swift in Sources */,
 				73E7BD2C2490CCB900C091B5 /* MapViewPresenter.swift in Sources */,
+				73410F7A24A49EE300CB564A /* ShowAlert.swift in Sources */,
 				73E7BD362490CCDA00C091B5 /* LoginViewAssembly.swift in Sources */,
 				73783E2A249B5F440031026A /* Path.swift in Sources */,
 				73E7BD492490D25A00C091B5 /* Constraints.swift in Sources */,
@@ -639,6 +634,7 @@
 				73E7BD2E2490CCC100C091B5 /* MapViewRouter.swift in Sources */,
 				73E7BD282490CC6300C091B5 /* MapViewController.swift in Sources */,
 				737A1A3524A098180038B898 /* User.swift in Sources */,
+				7374F84524ADBBCF004D6F44 /* LocationManager.swift in Sources */,
 				73E7BD472490D09F00C091B5 /* LoginView.swift in Sources */,
 				73E7BD322490CCCF00C091B5 /* LoginViewPresenter.swift in Sources */,
 				73E7BD452490CFB900C091B5 /* Auth.swift in Sources */,

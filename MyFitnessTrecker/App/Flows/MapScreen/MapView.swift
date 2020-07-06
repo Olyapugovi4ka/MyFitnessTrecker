@@ -29,7 +29,7 @@ class MapView: UIView {
     lazy var setCenterButton: UIButton = {
     let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "center.png"), for: .normal)
+       // button.setImage(UIImage(named: "center.png"), for: .normal)
         button.addTarget(self, action: #selector(setCenterButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -42,7 +42,7 @@ class MapView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         //button.setImage(UIImage(named: "go.png"), for: .normal)
-        button.setBackgroundImage(UIImage(named: "go.png"), for: .normal)
+       // button.setBackgroundImage(UIImage(named: "go.png"), for: .normal)
         button.contentMode = .scaleAspectFill
         button.addTarget(self, action: #selector(goAndStopButtonTapped(_:)), for: .touchUpInside)
         return button
@@ -51,9 +51,11 @@ class MapView: UIView {
     @objc func goAndStopButtonTapped(_ sender: UIButton) {
         if goAndStopButton.currentBackgroundImage == UIImage(named: "go.png"){
             delegate?.startTracking()
+            goAndStopButton.imageView?.image = nil
             goAndStopButton.setBackgroundImage(UIImage(named: "stop.png"), for: .normal)
         } else {
             delegate?.stopTracking()
+            goAndStopButton.imageView?.image = nil
             goAndStopButton.setBackgroundImage(UIImage(named: "go.png"), for: .normal)
         }
         
@@ -64,7 +66,7 @@ class MapView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
      
-        button.setImage(UIImage(named: "route.png"), for: .normal)
+       // button.setImage(UIImage(named: "route.png"), for: .normal)
         button.addTarget(self, action: #selector(loadPreviousRoute), for: .touchUpInside)
         return button
     }()
