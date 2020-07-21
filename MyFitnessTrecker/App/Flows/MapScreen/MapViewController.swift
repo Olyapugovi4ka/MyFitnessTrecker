@@ -11,7 +11,7 @@ import GoogleMaps
 import RealmSwift
 
 class MapViewController: UIViewController {
-
+    
     
     private let mapView = MapView()
     
@@ -19,10 +19,12 @@ class MapViewController: UIViewController {
     var assembler: MapViewAssembly!
     
     var isTracking: Bool = false
+    var image: UIImage?
     
     var route: GMSPolyline?
     var routePath: GMSMutablePath?
-  
+    var marker: GMSMarker?
+    
     let locationManager = LocationManager.instance
     
     override func loadView() {
@@ -41,32 +43,33 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         self.assembler.assembly()
         self.configureLocationManager()
-        //locationManager?.requestLocation()
         self.locationManager.requestLocaion()
         self.configureMap()
         self.mapView.mapView.clear()
-        //configureTimer()
-        print("MapViewVC init")
     }
-    
-    deinit {
-        print("deinit mapVC")
-    }
-    
     
     @objc func goToLoginScreen() {
         self.presenter?.goToLoginViewController()
     }
     
     func configureMap() {
-      _ = locationManager
+        _ = locationManager
             .location
             .asObservable()
             .bind { [weak self] location in
+                guard let self = self else { return }
                 guard let location = location else { return }
                 
                 let camera = GMSCameraPosition(target: location.coordinate, zoom: 17)
-                self?.mapView.mapView.camera = camera
+                self.mapView.mapView.camera = camera
+                if self.marker == nil {
+                    self.createMarker(position: location.coordinate)
+                } else {
+                    self.marker?.map = nil
+                    self.marker = nil
+                    self.createMarker(position: location.coordinate)
+                }
+               
         }
         
     }
@@ -80,7 +83,7 @@ class MapViewController: UIViewController {
     }
     
     func configureLocationManager(){
-       _ = locationManager
+        _ = locationManager
             .location
             .asObservable()
             .bind { [weak self] location in
@@ -91,6 +94,19 @@ class MapViewController: UIViewController {
                 self?.mapView.mapView.animate(to: position)
         }
     }
+    
+    func createMarker(position: CLLocationCoordinate2D)  {
+        let marker = GMSMarker(position: position)
+        let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        let image = ImageStore.loadImageFromDiskWith(fileName: "Selfy")
+        icon.image = image ??  UIImage(named: "step.png")
+        marker.iconView = icon
+        marker.map = mapView.mapView
+        self.marker = marker
+      
+    }
+    
+   
     
 }
 extension MapViewController: MapViewDelegate {
@@ -148,6 +164,8 @@ extension MapViewController: MapViewDelegate {
         }
         self.mapView.mapView.clear()
         self.route?.map = nil
+        self.marker?.map = nil
+        self.marker = nil
         self.isTracking = false
     }
     
@@ -164,9 +182,11 @@ extension MapViewController: MapViewDelegate {
         self.route?.strokeColor = .red
         self.route?.strokeWidth = 4
         self.route?.map = mapView.mapView
-         self.locationManager.startUpdatingLocation()
+        self.locationManager.startUpdatingLocation()
         self.isTracking = true
     }
+    
+    
     
 }
 

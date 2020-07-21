@@ -37,6 +37,7 @@ class RealmProvider {
     static func get<T: Object>(_ type: T.Type,
                                configuration: Realm.Configuration = deleteIfMigration) throws -> Results<T> {
         let realm = try Realm(configuration: configuration)
+         print(realm.configuration.fileURL!)
         return realm.objects(type)
     }
     

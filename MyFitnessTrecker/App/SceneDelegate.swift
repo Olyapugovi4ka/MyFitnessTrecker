@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        
+        self.visualEffectView.removeFromSuperview()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

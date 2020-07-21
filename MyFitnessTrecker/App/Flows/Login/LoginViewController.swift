@@ -8,8 +8,9 @@
 
 import UIKit
 import RxSwift
+import RealmSwift
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UINavigationControllerDelegate {
     
     private let loginView = LoginView()
     private lazy var isKeyBoardIsOnScreen: Bool = {
@@ -18,6 +19,9 @@ class LoginViewController: UIViewController {
     
     var presenter: LoginViewPresenterProtocol?
     var assembler: LoginViewAssembly!
+    
+   
+  
     
     override func loadView() {
         self.view = loginView
@@ -29,9 +33,7 @@ class LoginViewController: UIViewController {
         assembler.assembly()
         configureLoginBindings()
         print("LoginView init")
-       
     }
-    
     
     //MARK: Controller Lifecycle
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +92,12 @@ class LoginViewController: UIViewController {
     func clearTextfields() {
         loginView.setClearTextFields()
     }
+    
+    func addAvatar() {
+        let imagePickerController = ImagePickerController()
+        imagePickerController.imagePickerControllerDelegate = self
+        present(imagePickerController, animated: true)
+    }
 }
 
 extension LoginViewController: LoginViewDelegate {
@@ -111,7 +119,7 @@ extension LoginViewController: LoginViewDelegate {
    
     //MARK: Rx
     func configureLoginBindings() {
-        Observable.combineLatest(loginView.userLoginTextField.rx.text, loginView.passwordTextField.rx.text)
+    _ = Observable.combineLatest(loginView.userLoginTextField.rx.text, loginView.passwordTextField.rx.text)
             .map { login, password in
                 return !(login ?? "").isEmpty && (password ?? "").count >= 6
         }
@@ -122,4 +130,10 @@ extension LoginViewController: LoginViewDelegate {
     }
     
     
+}
+extension LoginViewController: ImagePickerControllerDelegate {
+    func goToPhotoViewController() {
+        self.presenter?.goToPhotoViewController()
+    }
+     
 }

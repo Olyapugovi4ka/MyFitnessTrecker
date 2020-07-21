@@ -11,7 +11,6 @@ import  GoogleMaps
 import  CoreLocation
 
 protocol MapViewPresenterProtocol {
-   func setMarker(to map: GMSMapView)
    func goToLoginViewController()
 }
 
@@ -22,7 +21,6 @@ class MapViewPresenter {
     
     //var locationManager: CLLocationManager?
     let coordinate = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)
-    var marker: GMSMarker?
     
     init(requestFactory: RequestFactoryProtocol,
          viewController: MapViewController,
@@ -37,33 +35,6 @@ extension MapViewPresenter: MapViewPresenterProtocol {
     func goToLoginViewController() {
         router.goToMapViewController()
     }
-    
-    
-    func setMarker(to map: GMSMapView) {
-//        if marker == nil {
-//            let marker = GMSMarker(position: coordinate)
-//            let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-//            icon.image = UIImage(named: "step.png")
-//            marker.iconView = icon
-//            marker.map = map
-//            self.marker = marker
-//        } else {
-//            marker?.map = nil
-//            marker = nil
-//        }
-        
-    }
-    
-    func loadMapCenter() {
-        
-    }
-    
-    func findCenter() {
-        viewController.setCenter(with: coordinate)
-        
-    }
-    
-    
     
 }
 

@@ -12,12 +12,14 @@ import RealmSwift
 protocol LoginViewPresenterProtocol {
     func login(userName: String, password: String)
     func register(userName: String, password: String)
+    func goToPhotoViewController()
 }
 
 class LoginViewPresenter {
     private let requestFactory: RequestFactoryProtocol
     private var viewController: LoginViewController
     private var router: LoginViewRouterProtocol
+    
     
     init(requestFactory: RequestFactoryProtocol,
          viewController: LoginViewController,
@@ -29,6 +31,10 @@ class LoginViewPresenter {
 }
 
 extension LoginViewPresenter: LoginViewPresenterProtocol {
+    func goToPhotoViewController() {
+        self.router.goToPhotoViewController()
+    }
+    
     func register(userName: String, password: String) {
         
         // check if userName and password is not empty
@@ -47,6 +53,12 @@ extension LoginViewPresenter: LoginViewPresenterProtocol {
                 }
                 self.viewController.showAlert(title: "Message", message: "Password for your account succesfully changed") { [weak self] _ in
                 UserDefaults.standard.set(true, forKey: "isLogin")
+                    self?.viewController.showAlertWithCancel(title: "Hey!", message: "Do you want to add your photo?", completion: { [weak self] (_) in
+                         self?.viewController.addAvatar()
+                        //self?.router.goToPhotoViewController()
+                        
+                        
+                    })
                 self?.router.goToMapViewController()
                 }
             }  else {
@@ -56,6 +68,10 @@ extension LoginViewPresenter: LoginViewPresenterProtocol {
                 try! RealmProvider.save(item: user)
                 self.viewController.showAlert(title: "Congratulation", message: "Your account is succesfully saved") { [weak self] _ in
                     UserDefaults.standard.set(true, forKey: "isLogin")
+                    self?.viewController.showAlertWithCancel(title: "Hey!", message: "Do you want to add your photo?", completion: { [weak self] (_) in
+                        self?.viewController.addAvatar()
+                                           //self?.router.goToPhotoViewController()
+                                       })
                     self?.router.goToMapViewController()
                 }
             }
@@ -68,6 +84,10 @@ extension LoginViewPresenter: LoginViewPresenterProtocol {
     func login(userName: String, password: String) {
         if loginNotifications(userName: userName, password: password){
             UserDefaults.standard.set(true, forKey: "isLogin")
+            self.viewController.showAlertWithCancel(title: "Hey!", message: "Do you want to add your photo?", completion: { [weak self] (_) in
+                 self?.viewController.addAvatar()
+                //self?.router.goToPhotoViewController()
+            })
             router.goToMapViewController()
         } else {
             self.viewController.showAlert(title: "Warning", message: "Login or Password is incorrect") { [weak self] _ in
@@ -93,3 +113,5 @@ extension LoginViewPresenter: LoginViewPresenterProtocol {
         return false
     }
 }
+
+

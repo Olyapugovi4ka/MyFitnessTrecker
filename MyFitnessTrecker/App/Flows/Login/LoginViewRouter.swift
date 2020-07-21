@@ -11,6 +11,8 @@ import UIKit
 protocol LoginViewRouterProtocol: class {
     func goToMapViewController()
     func goToRegistration()
+    func goToPhotoViewController()
+    
 }
 
 class LoginViewRouter {
@@ -22,6 +24,13 @@ class LoginViewRouter {
 }
 
 extension LoginViewRouter: LoginViewRouterProtocol {
+    func goToUIImagePickerViewController() {
+       
+       
+    }
+    
+    
+    
     func goToRegistration() {
         print(#function)
     }
@@ -31,8 +40,14 @@ extension LoginViewRouter: LoginViewRouterProtocol {
         let mapViewController = MapViewController()
         mapViewController.assembler = MapViewAssembly(viewController: mapViewController)
         self.viewController.navigationController?.pushViewController(mapViewController, animated: true)
-        
     }
+    
+    func goToPhotoViewController() {
+           let photoViewController = PhotoViewController()
+        photoViewController.assembler = PhotoViewAssembly(viewController: photoViewController)
+        self.viewController.navigationController?.pushViewController(photoViewController, animated: true)
+       }
+       
     
     
 }

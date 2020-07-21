@@ -21,8 +21,8 @@ final class LocationManager: NSObject {
         print("LocationManager init")
         self.configureLocationManager​()
     }
+    
     let locationManager = CLLocationManager()
-    //var location: CLLocation? = nil
     let location: BehaviorRelay<CLLocation?> = BehaviorRelay(value: nil)
     func startUpdatingLocation() {
         self.locationManager.startUpdatingLocation()
