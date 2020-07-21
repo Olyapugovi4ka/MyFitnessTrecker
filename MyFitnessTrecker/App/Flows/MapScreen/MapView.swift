@@ -51,9 +51,11 @@ class MapView: UIView {
     @objc func goAndStopButtonTapped(_ sender: UIButton) {
         if goAndStopButton.currentBackgroundImage == UIImage(named: "go.png"){
             delegate?.startTracking()
+            goAndStopButton.imageView?.image = nil
             goAndStopButton.setBackgroundImage(UIImage(named: "stop.png"), for: .normal)
         } else {
             delegate?.stopTracking()
+            goAndStopButton.imageView?.image = nil
             goAndStopButton.setBackgroundImage(UIImage(named: "go.png"), for: .normal)
         }
         

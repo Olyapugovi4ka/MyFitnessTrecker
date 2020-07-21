@@ -8,9 +8,11 @@ target 'MyFitnessTrecker' do
   # Pods for MyFitnessTrecker
   pod 'GoogleMaps'
   pod 'GooglePlaces'
-  pod 'RealmSwift'
- pod 'RealmSwift', '~> 5.0.3'
+  pod 'RealmSwift', '~> 5.0.3'
   pod 'Alamofire', '~> 4.9.1'
+  pod 'RxSwift', '~> 5'
+  pod 'RxCocoa', '~> 5'
+
   target 'MyFitnessTreckerTests' do
     inherit! :search_paths
     # Pods for testing
